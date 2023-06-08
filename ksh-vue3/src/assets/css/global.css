@@ -1,0 +1,30 @@
+html,
+body,
+#app {
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+}
+.chart-page {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+.cont {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+.chart {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+canvas {
+  border-radius: 20px;
+}
+.cont {
+  position: relative;
+}

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+</head>
+
+<body>
+    <button class="btn1">连接</button>
+    <button class="btn2">发送数据</button> <br>
+    从服务端接收到的数据如下：<br>
+    <span></span>
+    <script>
+        let btn1 = $('.btn1')
+        let btn2 = $('.btn2')
+        let s = $('span')
+        btn1.click(function () {
+            const ws = new WebSocket('ws://localhost:9898')
+            ws.onopen = () => {
+                console.log('连接服务端成功了');
+            }
+            ws.onclose = () => {
+                console.log('连接服务器失败');
+            }
+            ws.onmessage = (msg) => {
+                console.log('接收到从服务端发送过来的数据了');
+                console.log(msg);
+                s[0].innerHTML = msg.data
+            }
+            btn2.click(function () {
+                ws.send(JSON.stringify({
+                    action: 'themeChange',
+                    socketType: 'themeChange',
+                    chartName: '',
+                    value: 'chalk'
+                }))
+            })
+        })
+    </script>
+</body>
+
+</html>
